@@ -4,7 +4,7 @@ SoSe22_JQuizGame
 With this game we start of our first major project in Java.
 During the development we will implement most of the concept learned during both "Softwaretechnologie" courses.
 Most of the development happens during our live class Thursdays at 10am.
-This repository exists to track the changes and help those who are not attending to follow what happens.#
+This repository exists to track the changes and help those who are not attending to follow what happens.
 
 The idea is to make a more or less modular Quiz Game in which new question types as well as catalogues of questions can be added after the development is finished.
 At fist the application will work with a limited set of questions and in the CLI.
