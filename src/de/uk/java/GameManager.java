@@ -1,6 +1,7 @@
 package de.uk.java;
 
 public class GameManager {
+	// Variables needed in a game to keep track of progress, lives, lost or won state and so on
 	private int lives;
 	private int score;
 	private int wrongAnswers;
@@ -11,6 +12,12 @@ public class GameManager {
 	
 	Question[] questions;
 	
+	/**
+	 * Basic empty constructor to initialize the game
+	 * Set all the basic game variables to 0 (lives to 3)
+	 * 
+	 * Temporary: also creates the first two questions and populates the question array with them
+	 */
 	public GameManager() {
 		lives = 3;
 		this.score = 0;
