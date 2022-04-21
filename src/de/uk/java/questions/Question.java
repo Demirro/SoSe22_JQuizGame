@@ -1,9 +1,14 @@
-package de.uk.java;
+package de.uk.java.questions;
 
-public class Question {
+/**
+ * Abstract class for questions. All Question types inherit from this abstract class
+ * Handles the prompts, the category and common methods like toString or more to come
+ * @author Théo Bouveyron
+ *
+ */
+public abstract class Question {
 	// Basic variables for any question
 	private String prompt;
-	private boolean answer;
 	private String category;
 	
 	/**
@@ -12,9 +17,8 @@ public class Question {
 	 * @param answer - boolean - the value of the answer
 	 * @param category - String - category the question should be in
 	 */
-	public Question(String prompt, boolean answer, String category) {
+	public Question(String prompt, String category) {
 		this.prompt = prompt;
-		this.answer = answer;
 		this.category = category;
 	}
 
@@ -26,14 +30,6 @@ public class Question {
 
 	public void setPrompt(String prompt) {
 		this.prompt = prompt;
-	}
-
-	public boolean isAnswer() {
-		return answer;
-	}
-
-	public void setAnswer(boolean answer) {
-		this.answer = answer;
 	}
 
 	public String getCategory() {

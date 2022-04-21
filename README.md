@@ -1,5 +1,18 @@
 SoSe22_JQuizGame
 
+#### 21.04.2022
+##### English
+The first (very) basic game logic is implemented. We now have a functioning game loop with two example questions, user input and reactions to this user input.
+Winning and loosing is also already implemented. Everything is still to be seen as a prototype and will be further refined as we go.
+We made the Question class abstract and thus started implementing the question types with inheritance.
+For now we built the BoolQuestion class. It only contains the functionality for the answer (of type boolean). The rest of the question functionality is still in Question.
+
+##### Deutsch
+Die erste (sehr) grundlegende Spiellogik ist implementiert. Wir haben jetzt eine funktionierende Spielschleife mit zwei Beispielfragen, Benutzereingaben und Reaktionen auf diese Benutzereingaben.
+Auch das Gewinnen und Verlieren ist bereits implementiert. Alles ist noch als Prototyp zu sehen und wird im Laufe der Entwicklung weiter verfeinert werden.
+Wir haben die Klasse Question abstrakt gemacht und damit begonnen, die Fragetypen mit Vererbung zu implementieren.
+Für den Moment haben wir die Klasse BoolQuestion gebaut. Sie enthält nur die Funktionalität für die Antwort (vom Typ boolean). Der Rest der Fragenfunktionalität befindet sich weiterhin in Question.
+
 ### English
 With this game we start of our first major project in Java.
 During the development we will implement most of the concept learned during both "Softwaretechnologie" courses.
