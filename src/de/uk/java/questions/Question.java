@@ -1,5 +1,7 @@
 package de.uk.java.questions;
 
+import java.util.Iterator;
+
 /**
  * Abstract class for questions. All Question types inherit from this abstract class
  * Handles the prompts, the category and common methods like toString or more to come
@@ -39,6 +41,14 @@ public abstract class Question {
 	public void setCategory(String category) {
 		this.category = category;
 	}
+	
+	/**
+	 * Abstract method to check userInput for valid inputs and correct answer.
+	 * @param userInput - String from the command-line given by the user. This is the answer to be checked
+	 * @returns boolean - true if the user answer was correct; false if the answer is wrong
+	 * @throws InvalidInputException - custom Exception which handles invalid inputs by the user. Message contains valid input choices
+	 */
+	public abstract boolean getCorrectAnswer(String userInput) throws InvalidInputException;
 	
 	/**
 	 * Overide the toString method to get a logical output

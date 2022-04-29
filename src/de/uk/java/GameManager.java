@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 import de.uk.java.questions.BoolQuestion;
 import de.uk.java.questions.Question;
+import de.uk.java.questions.SingleChoiceQuestion;
+import de.uk.java.questions.InvalidInputException;
 
 public class GameManager {
 	// Variables needed in a game to keep track of progress, lives, lost or won state and so on
@@ -22,20 +24,24 @@ public class GameManager {
 	 * Set all the basic game variables to 0 (lives to 3)
 	 * Start the game loop via nextQuestion
 	 * 
-	 * Temporary: also creates the first two questions and populates the question array with them
+	 * Temporary: also creates the first four questions and populates the question array with them
 	 */
 	public GameManager() {
-		lives = 1;
+		lives = 3;
 		this.score = 0;
 		this.wrongAnswers = 0;
 		this.questionNumber = 0;
 		
-		questions = new Question[2];
+		questions = new Question[4];
 		BoolQuestion question1 = new BoolQuestion("Ist Java toll?", true, "Computer Science");
 		BoolQuestion question2 = new BoolQuestion("Ist die Stunde fast um?", true, "Lehre");
+		SingleChoiceQuestion question3 = new SingleChoiceQuestion("Seit wann existiert die Universität zu Köln?", "History", new String[]{"1111", "1388", "1565", "1945"}, 'B');
+		SingleChoiceQuestion question4 = new SingleChoiceQuestion("Was ist die Hauptstadt von Kambodscha?", "Geography", new String[]{"Kuala Lumpur", "Kampong Cham", "Phnom Penh", "Bangkok"}, 'C');
 		
 		questions[0] = question1;
 		questions[1] = question2;
+		questions[2] = question3;
+		questions[3] = question4;
 		
 		nextQuestion();
 		
@@ -98,32 +104,32 @@ public class GameManager {
 	/**
 	 * Handles user input in the console
 	 * 
-	 * Temporary: Hard coded to the questions given in the constructor. 
-	 * Doesn't yet check dynamically for the answer in the Question object
-	 * also it only works for boolean
+	 * UserInput checks and checks for the correct answer are dynamically checked 
+	 * by calling the inherited method getCorrectAnswer implemented in each Question type
 	 * 
-	 * Handles case sensitivity and wrong inputs
+	 * Wrong Inputs are checked in the same methods using a custom exceptions, which gives back valid inputs
 	 */
 	private void userAnswer() {
 		// Use Scanner and System.in to get user input from console (per line)
 		Scanner userInput = new Scanner(System.in);
 		
 		String answer = userInput.nextLine();
-		
-		if (answer.equalsIgnoreCase("wahr")) {
-			System.out.println("Du hast die Frage richtig beantwortet.");
-			// Keep track of the score --> +1 point
-			score++;
-		} else if (answer.equalsIgnoreCase("falsch")) {
-			System.out.println("Du hast die Frage falsch beantwortet.");
-			// Live lost and wrong answer counts up
-			lives--;
-			wrongAnswers++;
-		} else {
-			// If the user input is not recognized we repeat the input (also reprint the output)
-			System.out.println("Die Eingabe ist nicht gültig. Du kannst nur 'Wahr' oder 'Falsch' eingeben.");
-			System.out.println(questions[questionNumber]);
+
+		try {
+			if (questions[questionNumber].getCorrectAnswer(answer)) {
+				System.out.println("Du hast die Frage richtig beantwortet");
+				score++;
+				System.out.println("Dein Punktestand ist jetzt " + score);
+			} else {
+				System.out.println("Du hast die Frage falsch beantwortet und verlierst ein Leben.");
+				lives--;
+				wrongAnswers++;
+				System.out.println("Du hast noch " + lives + " Leben");
+			}
+		} catch (InvalidInputException e) {
+			System.err.println(e.getMessage());
 			userAnswer();
 		}
+			
+			}
 	}
-}

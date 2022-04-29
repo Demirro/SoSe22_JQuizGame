@@ -1,5 +1,24 @@
 SoSe22_JQuizGame
 
+#### 28.04.2022
+##### English
+This week we abstracted our code so that our answer checking logic is no longer hard-coded. For that we implemented a new abstract method *getCorrectAnswer* in Question.
+Every question type now has to implement that method and we can count on it being implemented, when checking for answers.
+Now we can start expanding the scope of our gameplay by implementing new question types like a single choice question, where the user has to choose between four answers, only one of which is correct.
+There are multiple ways of implementing this. The solution in this repo is only one option
+
+Extra:
+This repo contains further abstraction of the input checking, which I implemented after our session on thursday. We will talk in detail about it next week.
+
+##### Deutsch
+Diese Woche haben wir unseren Code abstrahiert, so dass unsere Antwortprüfungslogik nicht mehr hart kodiert ist. Zu diesem Zweck haben wir eine neue abstrakte Methode *getCorrectAnswer* in Question implementiert.
+Jeder Fragetyp muss nun diese Methode implementieren, und wir können uns darauf verlassen, dass sie bei der Prüfung der Antworten implementiert wird.
+Jetzt können wir damit beginnen, den Umfang unseres Spiels zu erweitern, indem wir neue Fragetypen implementieren, z. B. eine Single-Choice-Frage, bei der der Benutzer zwischen vier Antworten wählen muss, von denen nur eine richtig ist.
+Es gibt mehrere Möglichkeiten, dies zu implementieren. Die Lösung in diesem Repo ist nur eine Möglichkeit
+
+Extra:
+Dieses Repo enthält eine weitere Abstraktion der Eingabeprüfung, die ich nach unserer Sitzung am Donnerstag implementiert habe. Wir werden nächste Woche im Detail darüber sprechen.
+
 #### 21.04.2022
 ##### English
 The first (very) basic game logic is implemented. We now have a functioning game loop with two example questions, user input and reactions to this user input.

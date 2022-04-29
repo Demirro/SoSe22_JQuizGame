@@ -29,9 +29,25 @@ public class BoolQuestion extends Question {
 	public void setAnswer(boolean answer) {
 		this.answer = answer;
 	}
+	
+	
 
 	@Override
 	public String toString() {
 		return super.toString();
+	}
+
+	/**
+	 * Converts String to a boolean to check for correct input and compare to the stored correctAnswer
+	 * Exception if the the input is not valid
+	 */
+	@Override
+	public boolean getCorrectAnswer(String userInput) throws InvalidInputException {
+		if (userInput.equalsIgnoreCase("true") || userInput.equalsIgnoreCase("false")) {
+			return userInput.equalsIgnoreCase(Boolean.toString(answer));
+		} else {
+			throw new InvalidInputException("True, False");
+		}
+		
 	}
 }
