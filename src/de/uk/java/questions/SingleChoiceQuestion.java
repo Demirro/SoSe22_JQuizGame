@@ -23,7 +23,6 @@ public class SingleChoiceQuestion extends Question {
 		super(prompt, category);
 		this.answers = answers;
 		this.correctAnswer = correctAnswer;
-		
 	}
 
 	/**
@@ -44,7 +43,7 @@ public class SingleChoiceQuestion extends Question {
 	 * Method to build a correct String representation of the answer array
 	 * @return String representation of the answer array
 	 */
-	private String displayAnswers() {
+	public String displayAnswers() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("\n");
 		for (int i = 0; i < answers.length; i++) {

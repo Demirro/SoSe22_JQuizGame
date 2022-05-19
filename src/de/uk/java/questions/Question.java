@@ -2,13 +2,17 @@ package de.uk.java.questions;
 
 import java.util.Iterator;
 
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 /**
  * Abstract class for questions. All Question types inherit from this abstract class
  * Handles the prompts, the category and common methods like toString or more to come
  * @author Théo Bouveyron
  *
  */
-public abstract class Question {
+public abstract class Question extends JPanel {
 	// Basic variables for any question
 	private String prompt;
 	private String category;
@@ -24,6 +28,23 @@ public abstract class Question {
 		this.category = category;
 	}
 
+	public void definePane() {
+		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+		
+		JPanel questionHeader = new JPanel();
+		questionHeader.setLayout(new BoxLayout(questionHeader, BoxLayout.PAGE_AXIS));
+		JLabel category = new JLabel(getCategory());
+		JLabel prompt = new JLabel(getPrompt());
+		
+		category.setAlignmentX(CENTER_ALIGNMENT);
+		prompt.setAlignmentX(CENTER_ALIGNMENT);
+			
+		questionHeader.add(category);
+		questionHeader.add(prompt);
+		
+		add(questionHeader);
+		validate();
+	}
 	/* -- Getter and Setter -- */
 	
 	public String getPrompt() {

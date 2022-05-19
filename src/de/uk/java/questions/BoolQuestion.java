@@ -1,5 +1,8 @@
 package de.uk.java.questions;
 
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
 /**
  * Child of Question
  * Question type that handles boolean question/answers
@@ -20,6 +23,22 @@ public class BoolQuestion extends Question {
 	public BoolQuestion(String prompt, boolean answer, String category) {
 		super(prompt, category);
 		this.answer = answer;
+	}
+	
+	@Override
+	public void definePane() {
+		JPanel buttonPanel = new JPanel();
+		JButton trueButton = new JButton("True");
+		
+		buttonPanel.add(trueButton);
+		JButton falseButton = new JButton("False");
+		
+		buttonPanel.add(falseButton);
+		
+		super.definePane();
+		add(buttonPanel);
+		
+		validate();
 	}
 
 	public boolean isAnswer() {
@@ -45,9 +64,8 @@ public class BoolQuestion extends Question {
 	public boolean getCorrectAnswer(String userInput) throws InvalidInputException {
 		if (userInput.equalsIgnoreCase("true") || userInput.equalsIgnoreCase("false")) {
 			return userInput.equalsIgnoreCase(Boolean.toString(answer));
-		} else {
-			throw new InvalidInputException("True, False");
 		}
+		throw new InvalidInputException("True, False");
 		
 	}
 }
