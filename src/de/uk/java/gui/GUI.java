@@ -5,21 +5,29 @@ package de.uk.java.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 
+import de.uk.java.Game;
 import de.uk.java.questions.BoolQuestion;
 
 /**
  * @author Théo Bouveyron
  *
  */
-public class GUI extends JFrame{
+public class GUI extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	
-	public GUI() {
+	private UICallbacks uiCallbacks;
+	private JPanel contentPane;
+	
+	public GUI(UICallbacks uiCallbacks) {
+		this.uiCallbacks = uiCallbacks;
+		initMenu();
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
@@ -34,7 +42,7 @@ public class GUI extends JFrame{
 		pack();
 		
 		
-		JPanel contentPane = new JPanel();
+		contentPane = new JPanel();
 		contentPane.setLayout(new BorderLayout());
 		JLabel testText = new JLabel("Test Text ");
 		contentPane.add(testText, BorderLayout.PAGE_START);
@@ -55,14 +63,51 @@ public class GUI extends JFrame{
 		gameInfoPane.add(lives, BorderLayout.LINE_END);
 		contentPane.add(gameInfoPane, BorderLayout.PAGE_END);
 		
-		BoolQuestion question1 = new BoolQuestion("Is swing a pain in the ass", true , "Computer Science");
-		question1.definePane();
-		contentPane.add(question1, BorderLayout.CENTER);
-		
 		setLocationRelativeTo(null);
 		setContentPane(contentPane);
 		setVisible(true);
 		
+		
+	}
+
+	/**
+	 * 
+	 */
+	private void initMenu() {
+		JMenuBar menuBar = new JMenuBar();
+		JMenu gameMenu = new JMenu("Game");
+		JMenuItem newGame = new JMenuItem("New Game");
+		JMenuItem exitGame = new JMenuItem("Exit Game");
+		
+		newGame.addActionListener(this);
+		exitGame.addActionListener(this);
+		
+		gameMenu.add(newGame);
+		gameMenu.add(exitGame);
+		menuBar.add(gameMenu);
+		setJMenuBar(menuBar);
+	}
+	
+	public void displayGame(Game game) {
+		game.getCurrentQuestion().definePane();
+		contentPane.add(game.getCurrentQuestion());
+		revalidate();
+		repaint();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		switch (e.getActionCommand()) {
+		case ("New Game"):
+			System.out.println("new game button pressed");
+			displayGame(uiCallbacks.newGame());
+			break;
+		case ("Exit Game"):
+			System.out.println("exit game button pressed");
+			break;
+		case ("Answer"):
+			displayGame(uiCallbacks.checkAnswer("Test"));
+		}
 		
 	}
 

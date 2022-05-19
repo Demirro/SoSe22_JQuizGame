@@ -9,7 +9,6 @@ package de.uk.java.questions;
 public class SingleChoiceQuestion extends Question {
 	
 	private String[] answers;
-	private char correctAnswer;
 	
 	/**
 	 * Constructor for a new SingleChoiceQuestion
@@ -19,25 +18,11 @@ public class SingleChoiceQuestion extends Question {
 	 * @param answers - String array - array containing the 4 different answer possibilities
 	 * @param correctAnswer - char - Either A,B,C or D. Simple way to store the correct Answer
 	 */
-	public SingleChoiceQuestion(String prompt, String category, String[] answers, char correctAnswer) {
-		super(prompt, category);
+	public SingleChoiceQuestion(String prompt, String category, String[] answers, String correctAnswer) {
+		super(prompt, category, correctAnswer);
 		this.answers = answers;
-		this.correctAnswer = correctAnswer;
 	}
 
-	/**
-	 * Converts String to a char to check for correct input and compare to the stored correctAnswer
-	 * Exception if the the input is not valid
-	 */
-	@Override
-	public boolean getCorrectAnswer(String userInput) throws InvalidInputException {
-		userInput = userInput.toUpperCase();
-		if (userInput.charAt(0) >= 65 && userInput.charAt(0) <= 68) {
-			return userInput.charAt(0) == correctAnswer;
-		} else {
-			throw new InvalidInputException("A, B, C, D");
-		}
-	}
 
 	/**
 	 * Method to build a correct String representation of the answer array

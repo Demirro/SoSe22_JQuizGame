@@ -7,7 +7,7 @@ import de.uk.java.questions.Question;
 import de.uk.java.questions.SingleChoiceQuestion;
 import de.uk.java.questions.InvalidInputException;
 
-public class GameManager {
+public class Game {
 	// Variables needed in a game to keep track of progress, lives, lost or won state and so on
 	private int lives;
 	private int score;
@@ -16,6 +16,8 @@ public class GameManager {
 	
 	private boolean won;
 	private boolean lost;
+	
+	private Question currentQuestion;
 	
 	Question[] questions;
 	
@@ -26,17 +28,17 @@ public class GameManager {
 	 * 
 	 * Temporary: also creates the first four questions and populates the question array with them
 	 */
-	public GameManager() {
+	public Game() {
 		lives = 3;
 		this.score = 0;
 		this.wrongAnswers = 0;
 		this.questionNumber = 0;
 		
 		questions = new Question[4];
-		BoolQuestion question1 = new BoolQuestion("Ist Java toll?", true, "Computer Science");
-		BoolQuestion question2 = new BoolQuestion("Ist die Stunde fast um?", true, "Lehre");
-		SingleChoiceQuestion question3 = new SingleChoiceQuestion("Seit wann existiert die Universität zu Köln?", "History", new String[]{"1111", "1388", "1565", "1945"}, 'B');
-		SingleChoiceQuestion question4 = new SingleChoiceQuestion("Was ist die Hauptstadt von Kambodscha?", "Geography", new String[]{"Kuala Lumpur", "Kampong Cham", "Phnom Penh", "Bangkok"}, 'C');
+		BoolQuestion question1 = new BoolQuestion("Ist Java toll?", "True", "Computer Science");
+		BoolQuestion question2 = new BoolQuestion("Ist die Stunde fast um?", "True", "Lehre");
+		SingleChoiceQuestion question3 = new SingleChoiceQuestion("Seit wann existiert die Universität zu Köln?", "History", new String[]{"1111", "1388", "1565", "1945"}, "1388");
+		SingleChoiceQuestion question4 = new SingleChoiceQuestion("Was ist die Hauptstadt von Kambodscha?", "Geography", new String[]{"Kuala Lumpur", "Kampong Cham", "Phnom Penh", "Bangkok"}, "Phnom Penh");
 		
 		questions[0] = question1;
 		questions[1] = question2;
@@ -62,13 +64,8 @@ public class GameManager {
 			win();
 			return;
 		}
-		System.out.println(questions[questionNumber]);
-		
-		// Call for user input
-		userAnswer();
-		
 		// Count up for the next iteration of the game loop
-		questionNumber++;
+		currentQuestion = questions[questionNumber++];
 		
 		// Before calling the next Question we should check the if the user still have lives
 		if (lives != 0) {
@@ -100,36 +97,23 @@ public class GameManager {
 				+ "\nDein Punktestand war: " + score);
 		
 	}
+	
+	public Question getCurrentQuestion() {
+		return currentQuestion;
+	}
 
 	/**
-	 * Handles user input in the console
-	 * 
-	 * UserInput checks and checks for the correct answer are dynamically checked 
-	 * by calling the inherited method getCorrectAnswer implemented in each Question type
-	 * 
-	 * Wrong Inputs are checked in the same methods using a custom exceptions, which gives back valid inputs
+	 * @return
 	 */
-	private void userAnswer() {
-		// Use Scanner and System.in to get user input from console (per line)
-		Scanner userInput = new Scanner(System.in);
-		
-		String answer = userInput.nextLine();
-
-		try {
-			if (questions[questionNumber].getCorrectAnswer(answer)) {
-				System.out.println("Du hast die Frage richtig beantwortet");
-				score++;
-				System.out.println("Dein Punktestand ist jetzt " + score);
-			} else {
-				System.out.println("Du hast die Frage falsch beantwortet und verlierst ein Leben.");
-				lives--;
-				wrongAnswers++;
-				System.out.println("Du hast noch " + lives + " Leben");
-			}
-		} catch (InvalidInputException e) {
-			System.err.println(e.getMessage());
-			userAnswer();
+	public Game checkAnswer(String userAnswer) {
+		if (userAnswer.equalsIgnoreCase(currentQuestion.getCorrectAnswer())) {
+			score++;
+		} else {
+			wrongAnswers++;
+			lives--;
 		}
-			
-			}
+			nextQuestion();
+			return this;
 	}
+	
+}

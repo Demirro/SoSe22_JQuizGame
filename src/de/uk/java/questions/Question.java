@@ -16,6 +16,7 @@ public abstract class Question extends JPanel {
 	// Basic variables for any question
 	private String prompt;
 	private String category;
+	private String correctAnswer;
 	
 	/**
 	 * Constructor for a new Question
@@ -23,9 +24,10 @@ public abstract class Question extends JPanel {
 	 * @param answer - boolean - the value of the answer
 	 * @param category - String - category the question should be in
 	 */
-	public Question(String prompt, String category) {
+	public Question(String prompt, String category, String correctAnswer) {
 		this.prompt = prompt;
 		this.category = category;
+		this.correctAnswer = correctAnswer;
 	}
 
 	public void definePane() {
@@ -69,7 +71,9 @@ public abstract class Question extends JPanel {
 	 * @returns boolean - true if the user answer was correct; false if the answer is wrong
 	 * @throws InvalidInputException - custom Exception which handles invalid inputs by the user. Message contains valid input choices
 	 */
-	public abstract boolean getCorrectAnswer(String userInput) throws InvalidInputException;
+	public String getCorrectAnswer() {
+		return correctAnswer;
+	}
 	
 	/**
 	 * Overide the toString method to get a logical output
