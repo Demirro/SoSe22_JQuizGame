@@ -1,10 +1,12 @@
 package de.uk.java;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import de.uk.java.questions.BoolQuestion;
 import de.uk.java.questions.Question;
 import de.uk.java.questions.SingleChoiceQuestion;
+import de.uk.java.util.QuestionsFileReader;
 import de.uk.java.questions.InvalidInputException;
 
 public class Game {
@@ -19,7 +21,7 @@ public class Game {
 	
 	private Question currentQuestion;
 	
-	Question[] questions;
+	ArrayList<Question> questions;
 	
 	/**
 	 * Basic empty constructor to initialize the game
@@ -34,16 +36,8 @@ public class Game {
 		this.wrongAnswers = 0;
 		this.questionNumber = 0;
 		
-		questions = new Question[4];
-		BoolQuestion question1 = new BoolQuestion("Ist Java toll?", "True", "Computer Science");
-		BoolQuestion question2 = new BoolQuestion("Ist die Stunde fast um?", "True", "Lehre");
-		SingleChoiceQuestion question3 = new SingleChoiceQuestion("Seit wann existiert die Universität zu Köln?", "History", new String[]{"1111", "1388", "1565", "1945"}, "1388");
-		SingleChoiceQuestion question4 = new SingleChoiceQuestion("Was ist die Hauptstadt von Kambodscha?", "Geography", new String[]{"Kuala Lumpur", "Kampong Cham", "Phnom Penh", "Bangkok"}, "Phnom Penh");
+		questions = QuestionsFileReader.readQuestions("questions.json");
 		
-		questions[0] = question1;
-		questions[1] = question2;
-		questions[2] = question3;
-		questions[3] = question4;
 		
 		nextQuestion();
 		
@@ -60,12 +54,12 @@ public class Game {
 	 */
 	private void nextQuestion() {
 		// Check if we are at the end of the array
-		if (questionNumber > questions.length-1) {
+		if (questionNumber > questions.size()) {
 			win();
 			return;
 		}
 		// Count up for the next iteration of the game loop
-		currentQuestion = questions[questionNumber++];
+		//currentQuestion = questions[questionNumber++];
 		
 		// Before calling the next Question we should check the if the user still have lives
 		if (lives != 0) {

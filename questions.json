@@ -1,0 +1,99 @@
+[{
+    "type": "bool",
+    "category": "computer science",
+    "prompt": "Java is object oriented!",
+    "correct_answer": "true"
+}, {
+    "type": "bool",
+    "category": "computer science",
+    "prompt": "Java is bad!",
+    "correct_answer": "false"
+}, {
+    "type": "bool",
+    "category": "geography",
+    "prompt": "France is bigger than Germany.",
+    "correct_answer": "true"
+}, {
+    "type": "bool",
+    "category": "sports",
+    "prompt": "Germany won the Euro 2020 competition.",
+    "correct_answer": "false"
+}, {
+    "type": "bool",
+    "category": "science",
+    "prompt": "Alexander Fleming discovered penicillin",
+    "correct_answer": "true"
+}, {
+    "type": "bool",
+    "category": "geography",
+    "prompt": "Canada is the second biggest country in the world",
+    "correct_answer": "true"
+}, {
+    "type": "bool",
+    "category": "geography",
+    "prompt": "The United States of America is the biggest country in the world",
+    "correct_answer": "false"
+}, {
+    "type": "bool",
+    "category": "art",
+    "prompt": "The Mona Lisa was stolen from the Louvre in 1911",
+    "correct_answer": "true"
+}, {
+    "type": "bool",
+    "category": "science",
+    "prompt": "Alexander Fleming discovered penicillin",
+    "correct_answer": "true"
+}, {
+    "type": "bool",
+    "category": "history",
+    "prompt": "Martin Luther King Jr. once said 'I have a dream' in a speech",
+    "correct_answer": "true"
+}, {
+    "type": "bool",
+    "category": "music",
+    "prompt": "A conventional guitar has 7 strings",
+    "correct_answer": "false"
+}, {
+    "type": "bool",
+    "category": "music",
+    "prompt": "The song Yellow Submarine is originally by The Beatles",
+    "correct_answer": "false"
+}, {
+    "type": "bool",
+    "category": "science",
+    "prompt": "Sound travels faster than light",
+    "correct_answer": "false"
+}, {
+    "type": "bool",
+    "category": "science",
+    "prompt": "Neptune is bigger than Earth",
+    "correct_answer": "true"
+}, {
+    "type": "bool",
+    "category": "music",
+    "prompt": "Napoleon III conquerend much of Europe",
+    "correct_answer": "false"
+}, {
+    "type": "bool",
+    "category": "history",
+    "prompt": "Columbus was the first european to travel to the Americas",
+    "correct_answer": "false"
+}, {
+    "type": "bool",
+    "category": "history",
+    "prompt": "Konrad Adenauer was the mayor of the city of Cologne before becoming the chancelor of Germany",
+    "correct_answer": "true"
+}, {
+    "type": "single choice",
+    "category": "history",
+    "prompt": "Since when does the University of Cologne exist",
+    "answer_array": ["1111", "1388", "1565", "1945"],
+    "correct_answer": "1388"
+},{
+    "type":"Single Choice",
+    "category": "geography",
+    "prompt": "What is the capital of Cambodia",
+    "answer_array": ["Kuala Lumpur", "Kampong Cham", "Phnom Penh", "Bangkok"],
+    "correct_answer": "Phnom Penh"
+}
+]

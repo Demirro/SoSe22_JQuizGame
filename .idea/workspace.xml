@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="33e4a47a-3234-4daf-a4f6-caec6019b550" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/de/uk/java/gui/utils/RoundedBorder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" afterPath="$PROJECT_DIR$/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/uk/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/uk/java/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/uk/java/gui/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/uk/java/gui/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/uk/java/questions/BoolQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/uk/java/questions/BoolQuestion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/uk/java/questions/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/uk/java/questions/Question.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/uk/java/questions/SingleChoiceQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/uk/java/questions/SingleChoiceQuestion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/module-info.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="29befEpaD3gMlXSKBi64c8fLxbP" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="de.uk.java.QuizGame" />
+      <module name="SoSe22_JQuizGame" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="33e4a47a-3234-4daf-a4f6-caec6019b550" name="Changes" comment="" />
+      <created>1653386336683</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1653386336683</updated>
+      <workItem from="1653386339400" duration="2184000" />
+      <workItem from="1653395950330" duration="1579000" />
+      <workItem from="1653905491884" duration="1653000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
