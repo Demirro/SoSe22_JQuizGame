@@ -1,5 +1,7 @@
 package de.uk.java.questions;
 
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -24,16 +26,18 @@ public class BoolQuestion extends Question {
 	}
 	
 	@Override
-	public void definePane() {
+	public void definePane(ActionListener actionListener) {
 		JPanel buttonPanel = new JPanel();
 		JButton trueButton = new JButton("True");
-		
-		buttonPanel.add(trueButton);
 		JButton falseButton = new JButton("False");
-		
+		trueButton.addActionListener(actionListener);
+		falseButton.addActionListener(actionListener);
+		trueButton.setActionCommand("answer");
+		falseButton.setActionCommand("answer");
+		buttonPanel.add(trueButton);
 		buttonPanel.add(falseButton);
 		
-		super.definePane();
+		super.definePane(actionListener);
 		add(buttonPanel);
 		
 		validate();
