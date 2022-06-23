@@ -53,8 +53,6 @@ public class GUI extends JFrame implements ActionListener{
 		setLocationRelativeTo(null);
 		setContentPane(contentPane);
 		setVisible(true);
-		
-		
 	}
 
 	/**

@@ -63,6 +63,7 @@ public class QuestionFileReader {
 		case ("Single Choice"):
 			return new SingleChoiceQuestion(jobj.getString("prompt"), jobj.getString("category"), translateArray(jobj.getJSONArray("answer_array")), 
 					jobj.getString("correct_answer"));
+		// ADD CASES FOR NEW QUESTION TYPES
 		default:
 			System.err.println("Question Type was not recognized. Question Type: " + jobj.getString("type"));
 			return null;
