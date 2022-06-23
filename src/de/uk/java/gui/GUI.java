@@ -12,7 +12,6 @@ import javax.swing.*;
 import javax.swing.border.Border;
 
 import de.uk.java.Game;
-import de.uk.java.questions.BoolQuestion;
 
 /**
  * @author Théo Bouveyron
@@ -23,11 +22,12 @@ public class GUI extends JFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	
 	private UICallbacks uiCallbacks;
-	private JPanel contentPane;
+	private JPanel questionPane;
+	JLabel score;
+	JLabel lives;
 	
 	public GUI(UICallbacks uiCallbacks) {
 		this.uiCallbacks = uiCallbacks;
-		initMenu();
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
@@ -41,33 +41,33 @@ public class GUI extends JFrame implements ActionListener{
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		pack();
 		
-		
-		contentPane = new JPanel();
+		initMenu();
+		JPanel contentPane = new JPanel();
 		contentPane.setLayout(new BorderLayout());
-		JLabel testText = new JLabel("Test Text ");
-		contentPane.add(testText, BorderLayout.PAGE_START);
-		/*
-		JButton button1 = new JButton("True");
-		JButton button2 = new JButton("False");
-		button1.setPreferredSize(new Dimension(100,100));
-		button2.setSize(new Dimension(100,100));
-		contentPane.add(button1, BorderLayout.CENTER);
-		contentPane.add(button2, BorderLayout.CENTER);
-		*/
 		
-		JPanel gameInfoPane = new JPanel();
-		gameInfoPane.setLayout(new BorderLayout());
-		JLabel score = new JLabel("Score: 1");
-		JLabel lives = new JLabel("Lives left: 2");
-		gameInfoPane.add(score, BorderLayout.LINE_START);
-		gameInfoPane.add(lives, BorderLayout.LINE_END);
-		contentPane.add(gameInfoPane, BorderLayout.PAGE_END);
+		questionPane = new JPanel();
+		contentPane.add(questionPane);
+		
+		contentPane.add(initGameInfo(), BorderLayout.PAGE_END);
 		
 		setLocationRelativeTo(null);
 		setContentPane(contentPane);
 		setVisible(true);
 		
 		
+	}
+
+	/**
+	 * 
+	 */
+	private JPanel initGameInfo() {
+		JPanel gameInfoPane = new JPanel();
+		gameInfoPane.setLayout(new BorderLayout());
+		score = new JLabel("Score: 1");
+		lives = new JLabel("Lives left: 2");
+		gameInfoPane.add(score, BorderLayout.LINE_START);
+		gameInfoPane.add(lives, BorderLayout.LINE_END);
+		return gameInfoPane;
 	}
 
 	/**
@@ -89,8 +89,11 @@ public class GUI extends JFrame implements ActionListener{
 	}
 	
 	public void displayGame(Game game) {
-		game.getCurrentQuestion().definePane();
-		contentPane.add(game.getCurrentQuestion());
+		questionPane.removeAll();
+		game.getCurrentQuestion().definePane(this);
+		questionPane.add(game.getCurrentQuestion());
+		score.setText("Score: " + Integer.toString(game.getScore()));
+		lives.setText("Lives: " + Integer.toString(game.getLives()));
 		revalidate();
 		repaint();
 	}
@@ -105,8 +108,10 @@ public class GUI extends JFrame implements ActionListener{
 		case ("Exit Game"):
 			System.out.println("exit game button pressed");
 			break;
-		case ("Answer"):
-			displayGame(uiCallbacks.checkAnswer("Test"));
+		case ("answer"):
+			System.out.println("answer button pressed");
+			displayGame(uiCallbacks.checkAnswer(((JButton) e.getSource()).getText()));
+			break;
 		}
 		
 	}

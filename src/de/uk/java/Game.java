@@ -7,7 +7,7 @@ import java.util.Scanner;
 import de.uk.java.questions.BoolQuestion;
 import de.uk.java.questions.Question;
 import de.uk.java.questions.SingleChoiceQuestion;
-import de.uk.java.util.QuestionsFileReader;
+import de.uk.java.util.QuestionFileReader;
 import de.uk.java.questions.InvalidInputException;
 
 public class Game {
@@ -37,7 +37,7 @@ public class Game {
 		this.wrongAnswers = 0;
 		this.questionNumber = 0;
 		
-		questions = QuestionsFileReader.readQuestions("questions.json");
+		questions = QuestionFileReader.readQuestions("questions.json");
 		
 		
 		nextQuestion();
@@ -61,12 +61,12 @@ public class Game {
 		}
 		// Count up for the next iteration of the game loop
 		//currentQuestion = questions[questionNumber++];
-		Random r = new Random(questions.size());
-		questions.get(r.nextInt());
+		Random r = new Random();
+		currentQuestion = questions.get(r.nextInt(questions.size()));
+		questions.remove(currentQuestion);
+		
 		// Before calling the next Question we should check the if the user still have lives
-		if (lives != 0) {
-			nextQuestion();
-		} else {
+		if (lives == 0) {
 			gameOver();
 		}
 		
@@ -110,6 +110,20 @@ public class Game {
 		}
 			nextQuestion();
 			return this;
+	}
+
+	/**
+	 * @return
+	 */
+	public int getScore() {
+		return score;
+	}
+
+	/**
+	 * @return
+	 */
+	public int getLives() {
+		return lives;
 	}
 	
 }

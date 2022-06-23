@@ -1,6 +1,13 @@
 package de.uk.java.questions;
 
+import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
 
 /**
  * Child of Question
@@ -24,24 +31,29 @@ public class SingleChoiceQuestion extends Question {
 		super(prompt, category, correctAnswer);
 		this.answers = answers;
 	}
-
-
-	/**
-	 * Method to build a correct String representation of the answer array
-	 * @return String representation of the answer array
-	 */
-	/*public String displayAnswers() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("\n");
-		for (int i = 0; i < answers.si; i++) {
-			sb.append((char)(i+65));
-			sb.append(": ");
-			sb.append(answers[i]);
-			sb.append("; ");
-		}
-		return sb.toString();
+	
+	@Override
+	public void definePane(ActionListener actionListener) {
+			JPanel buttonPanel = new JPanel();
+			buttonPanel.setLayout(new GridLayout(2, 2, 20, 20));
+			JButton[] buttons = new JButton[4];
+			
+			//Shuffle the collection for random button placement
+			Collections.shuffle(answers);
+			for (int i = 0; i < buttons.length; i++) {
+				buttons[i] = new JButton(answers.get(i));
+				buttons[i].addActionListener(actionListener);
+				buttons[i].setActionCommand("answer");
+				buttonPanel.add(buttons[i]);
+			}
+			
+			super.definePane(actionListener);
+			add(buttonPanel);
+			
+			validate();
 	}
-	*/
+
+
 	@Override
 	public String toString() {
 		return super.toString();

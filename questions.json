@@ -90,7 +90,7 @@
     "answer_array": ["1111", "1388", "1565", "1945"],
     "correct_answer": "1388"
 },{
-    "type":"Single Choice",
+    "type":"single choice",
     "category": "geography",
     "prompt": "What is the capital of Cambodia",
     "answer_array": ["Kuala Lumpur", "Kampong Cham", "Phnom Penh", "Bangkok"],

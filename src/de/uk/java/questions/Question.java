@@ -1,5 +1,6 @@
 package de.uk.java.questions;
 
+import java.awt.event.ActionListener;
 import java.util.Iterator;
 
 import javax.swing.BoxLayout;
@@ -30,7 +31,7 @@ public abstract class Question extends JPanel {
 		this.correctAnswer = correctAnswer;
 	}
 
-	public void definePane() {
+	public void definePane(ActionListener actionListener) {
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		
 		JPanel questionHeader = new JPanel();
