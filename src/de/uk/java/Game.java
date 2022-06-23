@@ -1,6 +1,7 @@
 package de.uk.java;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 import de.uk.java.questions.BoolQuestion;
@@ -54,13 +55,14 @@ public class Game {
 	 */
 	private void nextQuestion() {
 		// Check if we are at the end of the array
-		if (questionNumber > questions.size()) {
+		if (questions.isEmpty()) {
 			win();
 			return;
 		}
 		// Count up for the next iteration of the game loop
 		//currentQuestion = questions[questionNumber++];
-		
+		Random r = new Random(questions.size());
+		questions.get(r.nextInt());
 		// Before calling the next Question we should check the if the user still have lives
 		if (lives != 0) {
 			nextQuestion();

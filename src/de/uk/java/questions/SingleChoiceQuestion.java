@@ -44,6 +44,6 @@ public class SingleChoiceQuestion extends Question {
 	*/
 	@Override
 	public String toString() {
-		return super.toString() + displayAnswers();
+		return super.toString();
 	}
 }

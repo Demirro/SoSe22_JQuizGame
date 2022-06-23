@@ -52,7 +52,7 @@ public class QuestionsFileReader {
 	private static Question questionFromJson(JSONObject jobj) {
 		switch(jobj.getString("type")) {
 		case "bool":
-			return new BoolQuestion(jobj.getString("prompt"), jobj.getString("correct_answer"), jobj.getString("category"));;
+			return new BoolQuestion(jobj.getString("prompt"), jobj.getString("correct_answer"), jobj.getString("category"));
 		case "single choice":
 			return new SingleChoiceQuestion(jobj.getString("prompt"), jobj.getString("category"), translateArray(jobj.getJSONArray("answer_array")), jobj.getString("correct_answer"));
 		default:
