@@ -22,6 +22,12 @@ public class QuizGame {
 			}
 
 			@Override
+			public Game newGameFromFile(String gameFile) {
+				game = new Game(gameFile);
+				return game;
+			}
+
+			@Override
 			public Game checkAnswer(String userAnswer) {
 				return game.checkAnswer(userAnswer);
 			}

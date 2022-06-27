@@ -42,8 +42,19 @@ public class Game {
 		nextQuestion();
 		
 	}
-	
-	/**
+
+    public Game(String gameFile) {
+		lives = 3;
+		this.score = 0;
+		this.wrongAnswers = 0;
+		this.questionNumber = 0;
+
+		questions = QuestionFileReader.readQuestions(gameFile);
+
+		nextQuestion();
+    }
+
+    /**
 	 * nextQuestion handles the progress in the game loop
 	 * Checks if there are questions left --> win if not (game loop stops)
 	 * Checks for lives left --> none left = lost and game loop stops
