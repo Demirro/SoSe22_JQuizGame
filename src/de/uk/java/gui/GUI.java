@@ -7,9 +7,11 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import de.uk.java.Game;
 
@@ -76,13 +78,16 @@ public class GUI extends JFrame implements ActionListener{
 	private void initMenu() {
 		JMenuBar menuBar = new JMenuBar();
 		JMenu gameMenu = new JMenu("Game");
+		JMenuItem gameFromFile = new JMenuItem("New Game from File");
 		JMenuItem newGame = new JMenuItem("New Game");
 		JMenuItem exitGame = new JMenuItem("Exit Game");
 		
 		newGame.addActionListener(this);
+		gameFromFile.addActionListener(this);
 		exitGame.addActionListener(this);
 		
 		gameMenu.add(newGame);
+		gameMenu.add(gameFromFile);
 		gameMenu.add(exitGame);
 		menuBar.add(gameMenu);
 		setJMenuBar(menuBar);
@@ -112,8 +117,20 @@ public class GUI extends JFrame implements ActionListener{
 			System.out.println("answer button pressed");
 			displayGame(uiCallbacks.checkAnswer(((JButton) e.getSource()).getText()));
 			break;
+		case ("New Game from File"):
+			System.out.println("New game from File pressed");
+			displayGame(uiCallbacks.newGameFromFile(chooseFile()));
+			break;
 		}
 		
 	}
 
+	private String chooseFile() {
+		JFileChooser chooser = new JFileChooser();
+		chooser.setCurrentDirectory(new File("./"));
+	    chooser.setFileFilter(new FileNameExtensionFilter(
+		        "Questions File (JSON)", "json"));
+	    chooser.showOpenDialog(this);
+	    return chooser.getSelectedFile().getAbsolutePath();
+	}
 }

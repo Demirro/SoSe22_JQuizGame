@@ -39,9 +39,18 @@ public class Game {
 		
 		questions = QuestionFileReader.readQuestions("questions.json");
 		
+		nextQuestion();
+	}
+	
+	public Game(String filePath) {
+		lives = 3;
+		this.score = 0;
+		this.wrongAnswers = 0;
+		this.questionNumber = 0;
+		
+		questions = QuestionFileReader.readQuestions(filePath);
 		
 		nextQuestion();
-		
 	}
 	
 	/**

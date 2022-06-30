@@ -25,6 +25,11 @@ public class QuizGame {
 			public Game checkAnswer(String userAnswer) {
 				return game.checkAnswer(userAnswer);
 			}
+			
+			public Game newGameFromFile(String filePath) {
+				 game = new Game(filePath);
+				 return game;
+			}
 		};
 		new GUI(uiCallbacks);
 	}
